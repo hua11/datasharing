@@ -78,7 +78,11 @@ TidyData-N.txt (11880 x 4)
 
 See [link](https://en.wikipedia.org/wiki/Wide_and_narrow_data) for more details:
 
+###infomation for system
 
+R version 3.2.0 (2015-04-16)
+
+Mac OSX 10.9.4
 
 
 
