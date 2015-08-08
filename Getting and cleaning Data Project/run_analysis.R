@@ -7,6 +7,7 @@ library(tidyr)
 setwd("~/Desktop/Get_clean_data/project/UCI_HAR_Dataset")
 
 # read file in R
+activity_labels <- read.table("activity_labels.txt")
 features <- read.table("features.txt")
 
 X_test <- read.table("test/X_test.txt")
@@ -48,12 +49,7 @@ names(act) <- "Activity"
 unique(act$Activity)
 
 # change the class labels with their activity name
-act$Activity[act$Activity== 1] <- "WALKING"
-act$Activity[act$Activity== 2] <- "WALKING_UPSTAIRS"
-act$Activity[act$Activity== 3] <- "WALKING_DOWNSTAIRS"
-act$Activity[act$Activity== 4] <- "SITTING"
-act$Activity[act$Activity== 5] <- "STANDING"
-act$Activity[act$Activity== 6] <- "LAYING"
+act$Activity = activity_labels[act$Activity, 2]
 
 # check if all class labels are changed
 unique(act$Activity)
@@ -66,8 +62,7 @@ IDs <- gsub("\\(\\)","",IDs)
 IDs <- gsub("-","\\.",IDs)
 IDs <- gsub("mean","Mean",IDs)
 IDs <- gsub("std","Std",IDs)
-#IDs <- gsub("^t","Time",IDs)
-#IDs <- gsub("^f","FFT",IDs)
+
 
 #labels the data set with descriptive variable names
 names(XX_MeanStd) <- IDs
